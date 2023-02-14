@@ -1,7 +1,7 @@
 {
-  "name": "@aesop-fables/containr",
-  "version": "0.2.2",
-  "description": "Inversion of Control container for Typescript",
+  "name": "@aesop-fables/containr-testing",
+  "version": "0.2.3",
+  "description": "Testing support (utilities, pattern examples) for containr",
   "type": "commonjs",
   "exports": {
     ".": {
@@ -23,6 +23,7 @@
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
+    "@aesop-fables/containr": "^0.2.3",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.11",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
@@ -41,7 +42,10 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "jest-mock-extended": "^3.0.1",
     "reflect-metadata": "^0.1.13"
+  },
+  "peerDependencies": {
+    "@aesop-fables/containr": ">= 0.2.2",
+    "jest-mock-extended": "3.x"
   }
 }

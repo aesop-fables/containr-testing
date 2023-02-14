@@ -1,4 +1,4 @@
-name: containr:build
+name: containr-testing:build
 
 on:
   pull_request
