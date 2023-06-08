@@ -1,5 +1,5 @@
 import { MockProxy, mock } from 'jest-mock-extended';
-import { getDependencyMetadata, IServiceContainer, ServiceCollection, Newable } from '@aesop-fables/containr';
+import { Internals, Newable, IServiceContainer, ServiceCollection } from '@aesop-fables/containr';
 
 export class Lazy<T> {
   private _value: T | undefined;
@@ -49,12 +49,12 @@ export class InteractionContext<ClassUnderTest> {
 }
 
 export function createInteractionContext<T>(constructor: Newable<T>): InteractionContext<T> {
-  const metadata = getDependencyMetadata(constructor);
+  const metadata = Internals.getDependencyMetadata(constructor);
   const services = new ServiceCollection();
 
   metadata.forEach(({ dependencyKey }) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    services.register(dependencyKey, mock<any>(undefined, { deep: true }));
+    services.singleton(dependencyKey, mock<any>(undefined, { deep: true }));
   });
 
   return new InteractionContext(services, constructor);
